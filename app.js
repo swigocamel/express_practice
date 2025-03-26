@@ -1,11 +1,17 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(req, res) {
-    res.send('<html><head></head><body><h1>hi!</h1></body></html>');
+app.get('/user/:name/', function(req, res) {
+    var myName = req.params.name;
+    if (myName !== 'tom') {
+        res.send('<html><head></head><body><h1>'+'查無此人'+'</h1></body></html>');
+
+    } else {
+        res.send('<html><head></head><body><h1>'+myName+'</h1></body></html>');
+    }
 });
 
-app.get('/user', function(req, res) {
+app.get('/user/edit-photo', function(req, res) {
     res.send('<html><head></head><body><h1>tom</h1></body></html>');
 });
 
